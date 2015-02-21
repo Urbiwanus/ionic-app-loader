@@ -1,0 +1,52 @@
+{
+  "files": {
+    "my-app.js": {
+      "filename": "app/my-app.js",
+      "version": "5b401ac0271267946be2efaeed21313e0052b105423a492a63441cd1afc4ad69"
+    },
+    "vendor-lib.js": {
+      "filename": "lib/vendor-lib.js",
+      "version": "f11c969d5a78dfa26ce4d91531d5eb95f1d5e934bfa0b7a641dce18ea610e13f"
+    },
+    "app-css.css": {
+      "filename": "css/app-css.css",
+      "version": "ce463a23f83c02c8a270eabc92ba05e9eb4a524aafaba203634c269c34e9c41c"
+    },
+    "browse.html": {
+      "filename": "templates/browse.html",
+      "version": "570eed0389cca75a6769c1fae90ca747236bb8584ca0c7a2c275ec57767ff332"
+    },
+    "login.html": {
+      "filename": "templates/login.html",
+      "version": "58e2f1af7f9e133d288355e9ba726a4a26326564979cb1c8eea19757aab1b947"
+    },
+    "menu.html": {
+      "filename": "templates/menu.html",
+      "version": "640947fc77b12437106dd60113c70afc91399c831954554c7472bf962d54b4ba"
+    },
+    "playlist.html": {
+      "filename": "templates/playlist.html",
+      "version": "e34010903dd1c1a4a4f098c9e733f7bf76a663968566b835aa9d24e6fda349aa"
+    },
+    "playlists.html": {
+      "filename": "templates/playlists.html",
+      "version": "4e248949f7c3fbcfc8f941fff8fffdc22516686c54b1be411ea43d41a2a08ff9"
+    },
+    "search.html": {
+      "filename": "templates/search.html",
+      "version": "347c1f164f0ba02f18374d881c1a89ef6b674107f231e7986ab12c4af12d7034"
+    }
+  },
+  "load": [
+    "app/my-app.js",
+    "lib/vendor-lib.js",
+    "css/app-css.css",
+    "templates/browse.html",
+    "templates/login.html",
+    "templates/menu.html",
+    "templates/playlist.html",
+    "templates/playlists.html",
+    "templates/search.html"
+  ],
+  "root": "./"
+}
