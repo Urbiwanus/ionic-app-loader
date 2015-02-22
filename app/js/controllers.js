@@ -33,7 +33,7 @@ angular.module('starter.controllers', [])
                     // Initialize a CordovaAppLoader
                     var loader = new CordovaAppLoader({
                         fs: fs,
-                        serverRoot: 'http://localhost:8080/',
+                        serverRoot: 'http://192.168.188.46:8080/',
                         localRoot: 'app',
                         cacheBuster: true, // make sure we're not downloading cached files.
                         checkTimeout: 10000 // timeout for the "check" function - when you loose internet connection

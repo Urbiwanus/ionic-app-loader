@@ -2,7 +2,7 @@
   "files": {
     "my-app.js": {
       "filename": "app/my-app.js",
-      "version": "5b401ac0271267946be2efaeed21313e0052b105423a492a63441cd1afc4ad69"
+      "version": "4fdf1cf7437154eb3efa1f71540e43770610df2b5cee4d0188f8ca845c8a0676"
     },
     "vendor-lib.js": {
       "filename": "lib/vendor-lib.js",
@@ -26,7 +26,7 @@
     },
     "playlist.html": {
       "filename": "templates/playlist.html",
-      "version": "e34010903dd1c1a4a4f098c9e733f7bf76a663968566b835aa9d24e6fda349aa"
+      "version": "7ecc44d8757abb4a5361c10eaf358c67477ae2f69eeee1c115c4b638720ed9ef"
     },
     "playlists.html": {
       "filename": "templates/playlists.html",
