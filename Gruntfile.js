@@ -89,12 +89,24 @@ module.exports = function (grunt) {
                     root: "./"
                 },
                 src: [
-                    'app/*.js',
-                    'lib/*.js',
                     'css/*.css',
+                    'lib/*.js',
+                    'app/*.js',
                     'templates/*.html'
                 ],
                 dest: ['manifest.json']
+            }
+        },
+        processhtml: {
+            options: {
+                data: {
+                    message: 'Deleting includes for hot push code.'
+                }
+            },
+            hotpush: {
+                files: {
+                    '../www/index.html': ['../www/index.html']
+                }
             }
         }
     });
@@ -109,7 +121,8 @@ module.exports = function (grunt) {
         'filerev',
         'usemin',
         'jsonmanifest',
-        'copy:manifest'
+        'copy:manifest',
+        'processhtml:hotpush'
     ]);
 
     grunt.loadNpmTasks('grunt-usemin');
@@ -119,6 +132,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-filerev');
     grunt.loadNpmTasks('grunt-ng-annotate');
+    grunt.loadNpmTasks('grunt-processhtml');
     grunt.file.setBase('app');
 
 
