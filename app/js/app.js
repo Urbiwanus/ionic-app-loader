@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
         .run(['$ionicPlatform', function ($ionicPlatform) {
 
@@ -23,7 +23,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 });
             }])
 
-        .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+        .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $httpProvider) {
                 $stateProvider
 
                         .state('app', {
@@ -71,4 +71,20 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                         });
                 // if none of the above states are matched, use this as the fallback
                 $urlRouterProvider.otherwise('/app/playlists');
+                // config hot push code http interceptor
+                $httpProvider.interceptors.push(['UpdateService', function (UpdateService) {
+                    return {
+                        'request': function (config) {
+                            if (UpdateService.isFileCached(config.url)) {
+
+                                var url = UpdateService.getCachedUrl(config.url);
+                                config.url = url;
+                            }
+                            return config;
+                        },
+                        'response': function (response) {
+                            return response;
+                        }
+                    };
+                }]);
             }]);
