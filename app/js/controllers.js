@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-        .controller('AppCtrl', ['$scope', '$ionicModal', '$timeout', '$q', function ($scope, $ionicModal, $timeout, $q) {
+        .controller('AppCtrl', ['$scope', '$ionicModal', '$timeout', '$q', 'UpdateService',  function ($scope, $ionicModal, $timeout, $q, UpdateService) {
                 // Form data for the login modal
                 $scope.loginData = {};
                 // Create the login modal that we will use later
@@ -27,35 +27,31 @@ angular.module('starter.controllers', [])
                     }, 1000);
                 };
                 $scope.checkUpdate = function () {
-                    var fs = new CordovaPromiseFS({
-                        Promise: $q
-                    });
-                    // Initialize a CordovaAppLoader
-                    var loader = new CordovaAppLoader({
-                        fs: fs,
-                        serverRoot: 'http://192.168.188.46:8080/',
-                        localRoot: 'app',
-                        cacheBuster: true, // make sure we're not downloading cached files.
-                        checkTimeout: 10000 // timeout for the "check" function - when you loose internet connection
-                    });
-                    loader.check().then(function (updateAvailable) {
-                        console.log(updateAvailable);
-                        if (updateAvailable)
-                        {
-                            loader.download(onprogress)
-                                    .then(
-                                            function (manifest)
-                                            {
-                                                console.log(manifest);
-                                                loader.update();
-                                            },
-                                            function (failedDownloadUrlArray)
-                                            {
-                                                console.log(failedDownloadUrlArray);
-                                            }
-                                    )
-                        }
-                    });
+                    var check = UpdateService.check();
+                    check.
+                        then(function(result) {
+                            if(result === true) {
+                                console.log('update available');
+                                var download = UpdateService.download();
+                                    download.then(
+                                        function(manifest) {
+                                            console.log('manifest.....:');
+                                            console.log(JSON.stringify(manifest));
+                                            UpdateService.update();
+                                        },
+                                        function(error) {
+                                            console.log('error....: ');
+                                            console.log(JSON.stringify(error));
+                                        }
+                                    );  
+                            } else {
+                                console.log('not update available');
+                            }
+                        },
+                        function(error){
+                            console.log('no update available');
+                            console.log(JSON.stringify(error));
+                        });
                 }
             }
         ])
@@ -64,10 +60,14 @@ angular.module('starter.controllers', [])
                 $scope.playlists = [
                     {title: 'Reggae2', id: 1},
                     {title: 'Chill3', id: 2},
-                    {title: 'Dubstepfdsfd', id: 3},
+                    {title: 'Dubstep', id: 3},
                     {title: 'Indie', id: 4},
                     {title: 'Rap', id: 5},
-                    {title: 'Cowbell', id: 6}
+                    {title: 'Cowbell', id: 6},
+                    {title: 'Techno', id: 7},
+                    {title: 'Swing', id: 8},
+                    {title: 'Jazz', id: 9},
+                    {title: 'Hip Hop', id: 10}
                 ];
             }])
 
