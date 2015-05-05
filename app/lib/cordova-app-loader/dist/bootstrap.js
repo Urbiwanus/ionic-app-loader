@@ -68,7 +68,7 @@ function loadManifest(manifest,fromLocalStorage,timeout){
         el.src= src + '?' + now;
         el.async = false;
       // Load CSS
-      } else {
+      } else if(src.substr(-4) === ".css"){
         el= document.createElement('link');
         el.rel = "stylesheet";
         el.href = src + '?' + now;
